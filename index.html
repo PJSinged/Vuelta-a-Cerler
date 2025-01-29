@@ -1,0 +1,2744 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!--
+    ======================================
+    METADATOS BÁSICOS
+    ======================================
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Plan de entrenamiento 6 fases (24 semanas) para correr 27,6 km con 1340m D+. Incluye tablas diarias, checkbox de progreso y cuenta atrás.">
+  <title>Plan Completo Barefoot - 27.6 km</title>
+
+  <!-- Ícono del sitio -->
+  <link rel="icon" 
+        href="https://cdn-icons-png.flaticon.com/512/3418/3418079.png"
+        type="image/png">
+  
+  <!-- Google Fonts -->
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Merriweather:wght@700&display=swap" 
+    rel="stylesheet">
+  
+  <!-- Font Awesome (reemplaza 'YOUR_KIT_ID' con tu kit si lo deseas) -->
+  <script 
+    src="https://kit.fontawesome.com/YOUR_KIT_ID.js" 
+    crossorigin="anonymous">
+  </script>
+
+  <!--
+    ======================================
+    CSS INLINE
+    ======================================
+  -->
+  <style>
+    /* ======================================
+       VARIABLES
+       ====================================== */
+       
+       :root {
+        /* Fondo general y contenedores */
+        --color-bg: #1A1A1A;             /* Near-black background */
+        --color-container: #2A2A2A;      /* Dark gray container */
+        --color-text: #F5F5F5;           /* Off-white text for contrast */
+
+        /* ACENTOS */
+        /* Main accent: Forest Green */
+        --color-accent: #2E8B57;         /* Replaces the old pastel reds */
+        /* Secondary accent: Warm rust/orange for special buttons or highlights */
+        --color-accent-secondary: #B5651D; 
+
+        /* Progress bar uses the main accent */
+        --color-progress: #2E8B57;
+
+        /* Color para las semanas */
+        --color-week: #0b512c;           /* Verde Menta para las semanas */
+        --color-week-hover: #129158;     /* Verde Medio para el hover de las semanas */
+
+        /* Intensidades (se mantienen, pero puedes ajustarlas si lo deseas) */
+        --color-int-baja: #31C48D;   
+        --color-int-media: #FFA74E;  
+        --color-int-alta: #FF6363;   
+        }
+
+  
+    /* ======================================
+       RESET BÁSICO
+       ====================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+  
+    /* ACCESIBILIDAD */
+    .sr-only {
+      position: absolute;
+      width: 1px; 
+      height: 1px; 
+      padding: 0; 
+      margin: -1px; 
+      overflow: hidden; 
+      clip: rect(0,0,0,0); 
+      border: 0;
+    }
+    .sr-only-focusable:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+    }
+  
+    /* ======================================
+       HEADER HERO
+       ====================================== */
+    .header-hero {
+      position: relative;
+      height: 50vh;
+      overflow: hidden;
+      background: var(--color-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .header-hero .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.25); 
+      z-index: 1;
+    }
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .header-content {
+      position: absolute;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+    }
+    .header-content .logo {
+      margin-bottom: 1rem;
+    }
+    .header-content h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .header-content p {
+      font-size: 1rem;
+      color: #f0f0f0;
+      margin-bottom: 1rem;
+    }
+  
+    /* ======================================
+       BOTÓN DE EJEMPLO (Reset Progress)
+       ====================================== */
+    .btn-reset {
+      background: var(--color-accent-secondary); /* Rust orange */
+      border: none;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .btn-reset:hover {
+      background: #8F4F17; /* Darker rust tone */
+    }
+  
+    /* ======================================
+       NAVEGACIÓN PRINCIPAL
+       ====================================== */
+    .main-nav {
+      background: #2E2E2E;
+      padding: 0.8rem;
+      text-align: center;
+    }
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .main-nav li {
+      margin: 0 1rem;
+    }
+    .main-nav a {
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .main-nav a:hover {
+      color: #fff;
+    }
+  
+    /* ======================================
+       CONTENEDOR PRINCIPAL
+       ====================================== */
+    .contenedor {
+      max-width: 1200px;
+      margin: 1rem auto;
+      padding: 1rem;
+      background: var(--color-container);
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+  
+    /* ======================================
+       COUNTDOWN + PROGRESS BAR
+       ====================================== */
+    .countdown-section, .progress-section {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    #countdown {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      margin: 0.5rem 0;
+    }
+    .progress-container {
+      background: #444;
+      border-radius: 10px;
+      height: 24px;
+      width: 80%;
+      margin: 0 auto 0.5rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .progress-bar {
+      height: 100%;
+      background: var(--color-progress); /* Forest green */
+      width: 0%;
+      transition: width 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 600;
+    }
+    #progress-text {
+      font-size: 0.9rem;
+    }
+  
+    /* ======================================
+       INTENSIDADES
+       ====================================== */
+    .intensidades {
+      text-align: center;
+      background: var(--color-container);
+      padding: 1rem;
+      border-radius: 5px;
+      margin: 1rem 0;
+    }
+    .intensidad-baja {
+      color: var(--color-int-baja);
+      font-weight: bold;
+    }
+    .intensidad-media {
+      color: var(--color-int-media);
+      font-weight: bold;
+    }
+    .intensidad-alta {
+      color: var(--color-int-alta);
+      font-weight: bold;
+    }
+  
+    /* ======================================
+       TOOLTIP
+       ====================================== */
+    .tooltip {
+      position: relative;
+      cursor: help;
+      font-weight: 600;
+      border-bottom: 1px dotted currentColor;
+    }
+    .tooltip:hover::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 1;
+      z-index: 999;
+    }
+    .tooltip::after {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+  
+    /* ======================================
+       ACORDEÓN DE FASES
+       ====================================== */
+    .phase-accordion {
+      margin-top: 1rem;
+    }
+    .phase-item {
+      margin-bottom: 1rem;
+      border-radius: 5px;
+      overflow: hidden;
+      background: var(--color-container);
+      margin: 0.5rem 0;
+    }
+    .phase-button {
+      width: 100%;
+      text-align: left;
+      padding: 1rem;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      cursor: pointer;
+      position: relative;
+      background: var(--color-accent); /* Forest green background for phase headings */
+      color: #fff;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+    .phase-button:hover {
+      background: #27674a; /* Slightly darker forest green on hover */
+    }
+    .phase-arrow {
+      margin-left: auto;
+      transition: transform 0.3s;
+    }
+    .phase-button[aria-expanded="true"] .phase-arrow {
+      transform: rotate(180deg);
+    }
+    .phase-content {
+      display: none;
+      background: var(--color-container);
+      padding: 1rem;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  
+    /* ======================================
+       SUB-ACORDEÓN DE SEMANAS
+       ====================================== */
+    .week-accordion {
+      margin-top: 0.5rem;
+    }
+    .week-item {
+      background: #3a3a3c;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .week-button {
+        width: 100%;
+        text-align: left;
+        padding: 0.75rem 1rem;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        cursor: pointer;
+        background: var(--color-week); /* Verde más claro para semanas */
+        color: #fff;
+        display: flex;
+        align-items: center;
+        transition: background 0.3s;
+        border-radius: 5px; /* Opcional: Añadir bordes redondeados si lo deseas */
+    }
+    .week-button:hover {
+        background: var(--color-week-hover); /* Verde más oscuro en hover para semanas */
+    }
+    .week-arrow {
+      margin-left: auto;
+      transition: transform 0.3s;
+    }
+    .week-button[aria-expanded="true"] .week-arrow {
+      transform: rotate(180deg);
+    }
+    .week-content {
+      display: none;
+      padding: 1rem;
+      animation: fadeIn 0.3s ease;
+    }
+  
+    /* ======================================
+       TABLAS SEMANALES (DIARIOS)
+       ====================================== */
+    table.daily-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+    }
+    table.daily-table th,
+    table.daily-table td {
+      border: 1px solid #444;
+      padding: 0.75rem;
+      text-align: left;
+      vertical-align: middle;
+      color: var(--color-text);
+    }
+    table.daily-table thead tr {
+      background: #333;
+    }
+    table.daily-table tbody tr:hover {
+      background: #444;
+    }
+    .fila-completada {
+      background-color: #2e562e !important; /* verde oscuro */
+    }
+    .semana-resumen {
+      margin: 0.5rem 0;
+      font-weight: 600;
+      color: var(--color-accent);
+    }
+  
+    /* ======================================
+       FOOTER
+       ====================================== */
+    .footer {
+      background: var(--color-container);
+      color: var(--color-text);
+      text-align: center;
+      padding: 1rem;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-top: 1px solid #444;
+    }
+    .footer-info {
+      margin-bottom: 0.5rem;
+    }
+    .footer-social a {
+      margin: 0 0.3rem;
+      color: #fff;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+    .footer-social a:hover {
+      color: var(--color-accent); /* Forest green hover on social links */
+    }
+  
+    /* ======================================
+       RESPONSIVE
+       ====================================== */
+    @media (max-width: 768px) {
+      .header-content h1 {
+        font-size: 1.6rem;
+      }
+      .contenedor {
+        margin: 0.5rem;
+        padding: 0.5rem;
+      }
+      table.daily-table {
+        font-size: 0.85rem;
+      }
+      .footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+  
+  
+
+</head>
+<body>
+  <!-- LINK SALTO DE CONTENIDO -->
+  <a href="#mainContent" class="sr-only sr-only-focusable">Saltar al contenido</a>
+
+  <!-- HEADER HERO -->
+  <header class="header-hero" role="banner">
+    <div class="overlay"></div>
+    <img 
+      src="images/hero.jpg" 
+      alt="Montañas al atardecer" 
+      class="hero-image"
+      loading="lazy"
+    />
+    <div class="header-content">
+      <div class="logo" aria-label="Logo Corredor">
+        <i class="fas fa-running" style="font-size: 3rem;" aria-hidden="true"></i>
+      </div>
+      <h1>Plan Barefoot - 27.6 km / 1340 m D+</h1>
+      <p>6 Fases · 24 Semanas · Desde Cero hasta la Meta</p>
+    </div>
+  </header>
+
+  <!-- NAVEGACIÓN PRINCIPAL -->
+  <nav class="main-nav" aria-label="Navegación principal">
+    <ul>
+      <li><a href="#phase1" data-phase="1">Fase 1</a></li>
+      <li><a href="#phase2" data-phase="2">Fase 2</a></li>
+      <li><a href="#phase3" data-phase="3">Fase 3</a></li>
+      <li><a href="#phase4" data-phase="4">Fase 4</a></li>
+      <li><a href="#phase5" data-phase="5">Fase 5</a></li>
+      <li><a href="#phase6" data-phase="6">Fase 6</a></li>
+    </ul>
+  </nav>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main class="contenedor" id="mainContent">
+
+    <!-- SECCIÓN COUNTDOWN + PROGRESO GLOBAL -->
+    <section class="countdown-section" aria-label="Cuenta atrás para la carrera">
+      <h2>Cuenta atrás - 20 de Julio 2025</h2>
+      <p id="countdown"></p>
+    </section>
+
+    <section class="progress-section" aria-label="Progreso General">
+      <h2>Progreso Global</h2>
+      <div class="progress-container">
+        <div class="progress-bar" id="globalProgressBar">
+          <span id="progress-text">0%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACORDEÓN DE FASES -->
+    <section class="phase-accordion" aria-label="Plan Completo en 6 Fases">
+
+      <!--
+        =============================================
+        FASE 1: SEMANAS 1-4
+        =============================================
+      -->
+      <article class="phase-item">
+        <button class="phase-button" aria-expanded="false" aria-controls="phase1">
+          <span>Fase 1 (Semanas 1-4) - Adaptación Inicial</span>
+          <i class="fas fa-chevron-down phase-arrow" aria-hidden="true"></i>
+        </button>
+        <div class="phase-content" id="phase1" role="region" aria-hidden="true">
+          <!-- 
+            Breve Descripción de Fase 1 
+            + Objetivos Generales 
+          -->
+          <p>
+            <strong>Objetivo:</strong> Adaptar pies y articulaciones al running barefoot. 
+            Mantener distancias cortas (15-30 min en ciudad), una tirada de montaña suave por semana
+            y 2 sesiones de fuerza enfocadas en tren inferior y core. Con esta fase, buscamos
+            una aclimatación progresiva a la técnica minimalista, evitando lesiones y 
+            preparando el cuerpo para volúmenes mayores en fases posteriores.
+          </p>
+      
+          <!-- Sub-accordion de las 4 semanas -->
+          <div class="week-accordion">
+      
+            <!-- ==============================
+                 SEMANA 1
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase1-week1">
+                Semana 1
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase1-week1" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Comienzo suave. 15-20 min ciudad, 30 min montaña. Fuerza básica tren inferior.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="1" data-week="1" data-day="1">
+                      </td>
+                      <td>Lunes</td>
+                      <td>Ciudad - trote suave barefoot</td>
+                      <td>15 min</td>
+                    </tr>
+                    <!-- Martes -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="1" data-week="1" data-day="2">
+                      </td>
+                      <td>Martes</td>
+                      <td>Fuerza (piernas + pies)</td>
+                      <td>Sentadillas, zancadas, 3x12</td>
+                    </tr>
+                    <!-- Miércoles -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="1" data-week="1" data-day="3">
+                      </td>
+                      <td>Miércoles</td>
+                      <td>Descanso / estiramientos</td>
+                      <td>---</td>
+                    </tr>
+                    <!-- Jueves -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="1" data-week="1" data-day="4">
+                      </td>
+                      <td>Jueves</td>
+                      <td>Ciudad - trote suave + técnica barefoot</td>
+                      <td>20 min</td>
+                    </tr>
+                    <!-- Viernes -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="1" data-week="1" data-day="5">
+                      </td>
+                      <td>Viernes</td>
+                      <td>Fuerza (core + pies)</td>
+                      <td>Plancha, ejercicios de equilibrio</td>
+                    </tr>
+                    <!-- Sábado -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="1" data-week="1" data-day="6">
+                      </td>
+                      <td>Sábado</td>
+                      <td>Montaña - sendero fácil</td>
+                      <td>30 min</td>
+                    </tr>
+                    <!-- Domingo -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="1" data-week="1" data-day="7">
+                      </td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- ==============================
+                 SEMANA 2
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase1-week2">
+                Semana 2
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase1-week2" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Aumentar ligeramente distancias en ciudad y montaña. Mantener 2 sesiones de fuerza.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="2" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Ciudad - trote suave barefoot</td>
+                      <td>20 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="2" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Fuerza tren inferior</td>
+                      <td>Sentadillas, zancadas, 3x12, gemelos 3x15</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="2" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Descanso / Cross training</td>
+                      <td>Caminar 30 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="2" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Ciudad - trote + técnica barefoot</td>
+                      <td>25 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="2" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Fuerza (core + pies)</td>
+                      <td>Planchas 3x30", equilibrio 3x30"</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="2" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Montaña - sendero fácil</td>
+                      <td>35 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="2" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- ==============================
+                 SEMANA 3
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase1-week3">
+                Semana 3
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase1-week3" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Continuar progresión: ~25-30 min ciudad y ~40 min montaña, reforzando técnica barefoot.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="3" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Ciudad - trote suave barefoot</td>
+                      <td>25 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="3" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Fuerza (tren inferior + core)</td>
+                      <td>Sentadillas con salto (3x8), plancha (3x30")</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="3" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Descanso activo</td>
+                      <td>Bicicleta suave 30 min o natación</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="3" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Ciudad - trote continuo + 5 min descalzo total</td>
+                      <td>30 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="3" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Fuerza (bosu / equilibrio)</td>
+                      <td>3 circuitos: sentadilla 10 rep, plancha 30", bosu 30"</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="3" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Montaña - sendero fácil</td>
+                      <td>40 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="3" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- ==============================
+                 SEMANA 4
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase1-week4">
+                Semana 4
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase1-week4" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Última semana de adaptación: ~30 min ciudad y ~50 min montaña; 
+                  listo para siguiente fase.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="4" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Ciudad - trote suave con 2-3 progresiones</td>
+                      <td>30 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="4" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Fuerza (tren inferior + pies)</td>
+                      <td>Incremento de ~10% peso, 3x10 rep</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="4" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Descanso / paseo suave</td>
+                      <td>30 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="4" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Ciudad - trote continuo + barefoot final</td>
+                      <td>35 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="4" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Fuerza (core + estabilidad)</td>
+                      <td>3 circuitos: plancha 30", zancadas 10 rep, bosu 30"</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="4" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Montaña - sendero con leves cuestas</td>
+                      <td>50 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="1" data-week="4" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+          </div> <!-- fin week-accordion Fase 1 -->
+        </div>
+      </article>
+      
+
+
+      <!--
+        =============================================
+        FASE 2, 3, 4, 5, 6
+        Estructura igual a Fase 1:
+        1. Button
+        2. Content
+        3. 4 sub-weeks con tablacitas
+        =============================================
+      -->
+
+      <article class="phase-item">
+        <button class="phase-button" aria-expanded="false" aria-controls="phase2">
+          <span>Fase 2 (Semanas 5-8) - Construcción de Volumen</span>
+          <i class="fas fa-chevron-down phase-arrow" aria-hidden="true"></i>
+        </button>
+        <div class="phase-content" id="phase2" role="region" aria-hidden="true">
+      
+          <!-- Breve descripción y objetivo de la Fase 2 -->
+          <p>
+            <strong>Objetivo:</strong> Aumentar progresivamente la duración y volumen de las carreras,
+            tanto en ciudad como en montaña, manteniendo la adaptación al barefoot. 
+            Incluir tiradas de montaña más largas, 2 sesiones de fuerza por semana 
+            y 1-2 días de descanso/recuperación para consolidar la base aeróbica y la resistencia.
+          </p>
+      
+          <!-- SUB-ACORDEÓN: 4 SEMANAS (5, 6, 7, 8) -->
+          <div class="week-accordion">
+      
+            <!-- ==============================
+                 SEMANA 5 (data-week="5")
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase2-week5">
+                Semana 5
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase2-week5" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Aumentar distancias a ~30 min en ciudad y 60 min en montaña. 2 sesiones de fuerza.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes (data-day="1") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="2" data-week="5" data-day="1">
+                      </td>
+                      <td>Lunes</td>
+                      <td>Ciudad - trote suave barefoot</td>
+                      <td>30 min</td>
+                    </tr>
+                    <!-- Martes (data-day="2") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="2" data-week="5" data-day="2">
+                      </td>
+                      <td>Martes</td>
+                      <td>Fuerza (tren inferior)</td>
+                      <td>Sentadillas 4x10, zancadas 4x10, gemelos 4x15</td>
+                    </tr>
+                    <!-- Miércoles (data-day="3") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="2" data-week="5" data-day="3">
+                      </td>
+                      <td>Miércoles</td>
+                      <td>Descanso activo</td>
+                      <td>Caminata ligera 30 min</td>
+                    </tr>
+                    <!-- Jueves (data-day="4") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="2" data-week="5" data-day="4">
+                      </td>
+                      <td>Jueves</td>
+                      <td>Ciudad - trote + técnica barefoot</td>
+                      <td>35 min</td>
+                    </tr>
+                    <!-- Viernes (data-day="5") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="2" data-week="5" data-day="5">
+                      </td>
+                      <td>Viernes</td>
+                      <td>Fuerza (core + pies)</td>
+                      <td>Planchas 3x30", ejercicios equilibrio</td>
+                    </tr>
+                    <!-- Sábado (data-day="6") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="2" data-week="5" data-day="6">
+                      </td>
+                      <td>Sábado</td>
+                      <td>Montaña - sendero moderado</td>
+                      <td>60 min</td>
+                    </tr>
+                    <!-- Domingo (data-day="7") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="2" data-week="5" data-day="7">
+                      </td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- ==============================
+                 SEMANA 6 (data-week="6")
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase2-week6">
+                Semana 6
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase2-week6" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Incrementar ~5 min en ciudad y ~5 min en montaña. Mantener 2 días de fuerza.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="6" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Ciudad - trote suave + intervalos</td>
+                      <td>35 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="6" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Fuerza (tren inferior + core)</td>
+                      <td>Sentadillas 4x10, planchas 3x45", zancadas 4x10</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="6" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Descanso activo</td>
+                      <td>Caminata ligera 35 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="6" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Ciudad - trote + técnica y cuestas</td>
+                      <td>40 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="6" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Fuerza (core + pies)</td>
+                      <td>Planchas, saltos suaves, arrugamiento de toalla</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="6" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Montaña - sendero con mayor desnivel</td>
+                      <td>65 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="6" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- ==============================
+                 SEMANA 7 (data-week="7")
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase2-week7">
+                Semana 7
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase2-week7" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Mejora de resistencia: ~40 min ciudad con intervalos y ~70 min montaña.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="7" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Ciudad - trote suave + intervalos de velocidad</td>
+                      <td>40 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="7" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Fuerza (tren inferior + core)</td>
+                      <td>Sentadillas 4x12, zancadas con peso 4x12, planchas 4x45"</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="7" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Descanso activo</td>
+                      <td>Caminata ligera 40 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="7" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Ciudad - trote con variación de ritmo</td>
+                      <td>45 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="7" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Fuerza (core + pies)</td>
+                      <td>Planchas 4x45", sentadillas con salto 4x10</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="7" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Montaña - desnivel moderado</td>
+                      <td>70 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="7" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- ==============================
+                 SEMANA 8 (data-week="8")
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase2-week8">
+                Semana 8
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase2-week8" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Cierre de Fase 2: ~45-50 min en ciudad y ~80 min en montaña, con mayor desnivel.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="8" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Ciudad - trote suave + cuestas</td>
+                      <td>45 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="8" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Fuerza (tren inferior + core)</td>
+                      <td>~60 min, incrementando peso 10%</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="8" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Descanso activo</td>
+                      <td>Caminata ligera 45 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="8" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Ciudad - trote con cuestas prolongadas</td>
+                      <td>50 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="8" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Fuerza (core + pies)</td>
+                      <td>~55 min, planchas 4x60", equilibrio 4x45"</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="8" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Montaña - desnivel mayor</td>
+                      <td>80 min</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" data-phase="2" data-week="8" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+          </div> <!-- fin week-accordion Fase 2 -->
+        </div>
+      </article>
+      
+
+      <article class="phase-item">
+        <button class="phase-button" aria-expanded="false" aria-controls="phase3">
+          <span>Fase 3 (Semanas 9-12) - Base Aeróbica y Velocidad</span>
+          <i class="fas fa-chevron-down phase-arrow" aria-hidden="true"></i>
+        </button>
+        <div class="phase-content" id="phase3" role="region" aria-hidden="true">
+          
+          <!-- Breve descripción y objetivo de la Fase 3 -->
+          <p>
+            <strong>Objetivo:</strong> Consolidar la base aeróbica e introducir intervalos de velocidad e inclinación más marcados. 
+            Incrementar la duración de las tiradas de montaña (~60-70 min) y mantener 2-3 sesiones de carrera en ciudad junto con 2 sesiones de fuerza por semana.
+            Esta fase busca mejorar la resistencia, la velocidad y la técnica barefoot, preparando el cuerpo para esfuerzos más intensos en las fases posteriores.
+          </p>
+      
+          <!-- SUB-ACORDEÓN: 4 SEMANAS (9, 10, 11, 12) -->
+          <div class="week-accordion">
+      
+            <!-- ==============================
+                 SEMANA 9 (data-week="9")
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase3-week9">
+                Semana 9
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase3-week9" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Consolidación de la base aeróbica con introducción de intervalos de velocidad.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes (data-day="1") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="9" data-day="1">
+                      </td>
+                      <td>Lunes</td>
+                      <td>Ciudad - trote con intervalos de velocidad</td>
+                      <td>40 min</td>
+                    </tr>
+                    <!-- Martes (data-day="2") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="9" data-day="2">
+                      </td>
+                      <td>Martes</td>
+                      <td>Fuerza (tren inferior + core)</td>
+                      <td>Sentadillas con salto 3x8, zancadas estáticas 3x12, elevaciones de talones 3x15, planchas 3x30"</td>
+                    </tr>
+                    <!-- Miércoles (data-day="3") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="9" data-day="3">
+                      </td>
+                      <td>Miércoles</td>
+                      <td>Descanso activo</td>
+                      <td>Bicicleta suave 30 min o natación</td>
+                    </tr>
+                    <!-- Jueves (data-day="4") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="9" data-day="4">
+                      </td>
+                      <td>Jueves</td>
+                      <td>Ciudad - trote con técnica y cuestas cortas</td>
+                      <td>45 min</td>
+                    </tr>
+                    <!-- Viernes (data-day="5") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="9" data-day="5">
+                      </td>
+                      <td>Viernes</td>
+                      <td>Fuerza (core + pies)</td>
+                      <td>Planchas 3x30", ejercicios de equilibrio 3x30"</td>
+                    </tr>
+                    <!-- Sábado (data-day="6") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="9" data-day="6">
+                      </td>
+                      <td>Sábado</td>
+                      <td>Montaña - sendero con desnivel moderado</td>
+                      <td>60 min</td>
+                    </tr>
+                    <!-- Domingo (data-day="7") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="9" data-day="7">
+                      </td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- ==============================
+                 SEMANA 10 (data-week="10")
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase3-week10">
+                Semana 10
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase3-week10" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Incremento de la intensidad en ciudad y montaña para mejorar resistencia y velocidad.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes (data-day="1") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="10" data-day="1">
+                      </td>
+                      <td>Lunes</td>
+                      <td>Ciudad - trote con intervalos de velocidad</td>
+                      <td>45 min</td>
+                    </tr>
+                    <!-- Martes (data-day="2") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="10" data-day="2">
+                      </td>
+                      <td>Martes</td>
+                      <td>Fuerza (tren inferior + core)</td>
+                      <td>Sentadillas con salto 4x8, zancadas con salto 4x8 por pierna, elevaciones de talones 4x15, planchas 3x30"</td>
+                    </tr>
+                    <!-- Miércoles (data-day="3") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="10" data-day="3">
+                      </td>
+                      <td>Miércoles</td>
+                      <td>Descanso activo</td>
+                      <td>Caminata ligera 35 min</td>
+                    </tr>
+                    <!-- Jueves (data-day="4") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="10" data-day="4">
+                      </td>
+                      <td>Jueves</td>
+                      <td>Ciudad - trote con técnica y cuestas prolongadas</td>
+                      <td>50 min</td>
+                    </tr>
+                    <!-- Viernes (data-day="5") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="10" data-day="5">
+                      </td>
+                      <td>Viernes</td>
+                      <td>Fuerza (core + pies)</td>
+                      <td>Planchas 3x30", ejercicios de equilibrio 3x30"</td>
+                    </tr>
+                    <!-- Sábado (data-day="6") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="10" data-day="6">
+                      </td>
+                      <td>Sábado</td>
+                      <td>Montaña - sendero con mayor desnivel</td>
+                      <td>65 min</td>
+                    </tr>
+                    <!-- Domingo (data-day="7") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="10" data-day="7">
+                      </td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- ==============================
+                 SEMANA 11 (data-week="11")
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase3-week11">
+                Semana 11
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase3-week11" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Mayor intensidad en las carreras y sesiones de fuerza para mejorar la velocidad y resistencia.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes (data-day="1") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="11" data-day="1">
+                      </td>
+                      <td>Lunes</td>
+                      <td>Ciudad - trote con intervalos de velocidad</td>
+                      <td>50 min</td>
+                    </tr>
+                    <!-- Martes (data-day="2") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="11" data-day="2">
+                      </td>
+                      <td>Martes</td>
+                      <td>Fuerza (tren inferior + core)</td>
+                      <td>Sentadillas con salto 4x8, zancadas con salto 4x8 por pierna, elevaciones de talones 4x15, planchas 4x30"</td>
+                    </tr>
+                    <!-- Miércoles (data-day="3") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="11" data-day="3">
+                      </td>
+                      <td>Miércoles</td>
+                      <td>Descanso activo</td>
+                      <td>Caminata ligera 40 min</td>
+                    </tr>
+                    <!-- Jueves (data-day="4") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="11" data-day="4">
+                      </td>
+                      <td>Jueves</td>
+                      <td>Ciudad - trote con técnica y cuestas prolongadas</td>
+                      <td>55 min</td>
+                    </tr>
+                    <!-- Viernes (data-day="5") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="11" data-day="5">
+                      </td>
+                      <td>Viernes</td>
+                      <td>Fuerza (core + pies)</td>
+                      <td>Planchas 4x30", sentadillas con salto 4x10</td>
+                    </tr>
+                    <!-- Sábado (data-day="6") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="11" data-day="6">
+                      </td>
+                      <td>Sábado</td>
+                      <td>Montaña - sendero con desnivel moderado</td>
+                      <td>70 min</td>
+                    </tr>
+                    <!-- Domingo (data-day="7") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="11" data-day="7">
+                      </td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- ==============================
+                 SEMANA 12 (data-week="12")
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase3-week12">
+                Semana 12
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase3-week12" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Consolidación final de la fase con mayor duración e intensidad en las carreras y sesiones de fuerza.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes (data-day="1") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="12" data-day="1">
+                      </td>
+                      <td>Lunes</td>
+                      <td>Ciudad - trote con intervalos de velocidad</td>
+                      <td>55 min</td>
+                    </tr>
+                    <!-- Martes (data-day="2") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="12" data-day="2">
+                      </td>
+                      <td>Martes</td>
+                      <td>Fuerza (tren inferior + core)</td>
+                      <td>Sentadillas con salto 4x8, zancadas con salto 4x8 por pierna, elevaciones de talones 4x15, planchas 4x30"</td>
+                    </tr>
+                    <!-- Miércoles (data-day="3") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="12" data-day="3">
+                      </td>
+                      <td>Miércoles</td>
+                      <td>Descanso activo</td>
+                      <td>Caminata ligera 45 min</td>
+                    </tr>
+                    <!-- Jueves (data-day="4") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="12" data-day="4">
+                      </td>
+                      <td>Jueves</td>
+                      <td>Ciudad - trote con técnica y variación de ritmo</td>
+                      <td>60 min</td>
+                    </tr>
+                    <!-- Viernes (data-day="5") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="12" data-day="5">
+                      </td>
+                      <td>Viernes</td>
+                      <td>Fuerza (core + pies)</td>
+                      <td>Planchas 4x30", sentadillas con salto 4x10</td>
+                    </tr>
+                    <!-- Sábado (data-day="6") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="12" data-day="6">
+                      </td>
+                      <td>Sábado</td>
+                      <td>Montaña - sendero con desnivel mayor</td>
+                      <td>70 min</td>
+                    </tr>
+                    <!-- Domingo (data-day="7") -->
+                    <tr>
+                      <td>
+                        <input type="checkbox" data-phase="3" data-week="12" data-day="7">
+                      </td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+          </div> <!-- fin week-accordion Fase 3 -->
+        </div>
+      </article>
+      
+
+      <article class="phase-item">
+        <button class="phase-button" aria-expanded="false" aria-controls="phase4">
+          <span>Fase 4 (Semanas 13-16) - Volumen Montaña y Bajada</span>
+          <i class="fas fa-chevron-down phase-arrow" aria-hidden="true"></i>
+        </button>
+        <div class="phase-content" id="phase4" role="region" aria-hidden="true">
+          
+          <!-- Breve descripción de la Fase 4 -->
+          <p>
+            <strong>Objetivo:</strong> Incrementar la duración de la tirada de montaña (75-90 min) 
+            y perfeccionar la técnica de bajada. Mantener 2-3 rodajes en ciudad y 2 días de fuerza 
+            o trabajo específico de pies. Esta fase refuerza la resistencia en terrenos con desnivel 
+            y consolida la adaptación barefoot.
+          </p>
+      
+          <div class="week-accordion">
+      
+            <!-- =========================
+                 SEMANA 13
+            ========================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase4-week13">
+                Semana 13
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase4-week13" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Primer escalón de la fase: ~75 min en montaña, trabajo de bajada.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="13" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Ciudad - trote con cuestas y técnica barefoot</td>
+                      <td>50 min</td>
+                    </tr>
+                    <!-- Martes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="13" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Gimnasio – Fuerza resistencia (tren inferior + core)</td>
+                      <td>55 min</td>
+                    </tr>
+                    <!-- Miércoles -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="13" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Carrera suave o fartlek (opcional)</td>
+                      <td>45 min</td>
+                    </tr>
+                    <!-- Jueves -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="13" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Fuerza pies + core</td>
+                      <td>40 min</td>
+                    </tr>
+                    <!-- Viernes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="13" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Rodaje largo montaña</td>
+                      <td>75 min</td>
+                    </tr>
+                    <!-- Sábado -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="13" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Descanso / recuperación activa</td>
+                      <td>30 min paseo o yoga</td>
+                    </tr>
+                    <!-- Domingo -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="13" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- =========================
+                 SEMANA 14
+            ========================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase4-week14">
+                Semana 14
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase4-week14" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Se suben unos minutos más en montaña (~80 min) y se refuerza la bajada.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="14" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Repeticiones de cuestas en ciudad</td>
+                      <td>50-55 min</td>
+                    </tr>
+                    <!-- Martes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="14" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Gimnasio – Fuerza resistencia (circuitos)</td>
+                      <td>60 min</td>
+                    </tr>
+                    <!-- Miércoles -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="14" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Carrera suave o fartlek</td>
+                      <td>45 min</td>
+                    </tr>
+                    <!-- Jueves -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="14" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Gimnasio – Fuerza específica pies y core</td>
+                      <td>45 min</td>
+                    </tr>
+                    <!-- Viernes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="14" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Rodaje largo montaña (bajada)</td>
+                      <td>80 min</td>
+                    </tr>
+                    <!-- Sábado -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="14" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Descanso / recuperación activa</td>
+                      <td>30-40 min paseo o yoga</td>
+                    </tr>
+                    <!-- Domingo -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="14" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- =========================
+                 SEMANA 15
+            ========================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase4-week15">
+                Semana 15
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase4-week15" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Se incrementa volumen en montaña (~85 min) y se refuerza la fuerza de tren inferior.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="15" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Repeticiones de cuestas</td>
+                      <td>55 min</td>
+                    </tr>
+                    <!-- Martes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="15" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Gimnasio – Fuerza resistencia (circuitos)</td>
+                      <td>60 min</td>
+                    </tr>
+                    <!-- Miércoles -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="15" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Carrera suave o fartlek</td>
+                      <td>50 min</td>
+                    </tr>
+                    <!-- Jueves -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="15" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Gimnasio – Fuerza específica (pies + core)</td>
+                      <td>45 min</td>
+                    </tr>
+                    <!-- Viernes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="15" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Rodaje largo montaña</td>
+                      <td>85 min</td>
+                    </tr>
+                    <!-- Sábado -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="15" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Descanso activo</td>
+                      <td>30 min caminar / yoga</td>
+                    </tr>
+                    <!-- Domingo -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="15" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- =========================
+                 SEMANA 16
+            ========================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase4-week16">
+                Semana 16
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase4-week16" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Última semana de la fase: ~90 min montaña. Pulir técnica de bajada y resistencia.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="16" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Repeticiones de cuestas</td>
+                      <td>60 min</td>
+                    </tr>
+                    <!-- Martes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="16" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Gimnasio – Fuerza resistencia (circuitos)</td>
+                      <td>60-65 min</td>
+                    </tr>
+                    <!-- Miércoles -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="16" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Carrera suave o fartlek</td>
+                      <td>55 min</td>
+                    </tr>
+                    <!-- Jueves -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="16" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Gimnasio – Fuerza específica pies y core</td>
+                      <td>50 min</td>
+                    </tr>
+                    <!-- Viernes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="16" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Rodaje largo montaña</td>
+                      <td>90 min</td>
+                    </tr>
+                    <!-- Sábado -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="16" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Descanso activo</td>
+                      <td>30 min caminar / yoga</td>
+                    </tr>
+                    <!-- Domingo -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="4" data-week="16" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+          </div> <!-- fin week-accordion Fase 4 -->
+        </div>
+      </article>
+      
+
+      <article class="phase-item">
+        <button class="phase-button" aria-expanded="false" aria-controls="phase5">
+          <span>Fase 5 (Semanas 17-20) - Simulaciones Carrera</span>
+          <i class="fas fa-chevron-down phase-arrow" aria-hidden="true"></i>
+        </button>
+        <div class="phase-content" id="phase5" role="region" aria-hidden="true">
+      
+          <!-- Breve descripción de la Fase 5 -->
+          <p>
+            <strong>Objetivo:</strong> Simular condiciones de carrera con tiradas en montaña de 2-3 h,
+            perfeccionar la técnica barefoot prolongada y ajustar hidratación/nutrición. 
+            Mantener 2 sesiones de fuerza semanales pero con volumen moderado, 
+            e incluir al menos 1 día de descanso total y 1 de descanso activo.
+          </p>
+      
+          <!-- SUB-ACORDEÓN: SEMANAS 17, 18, 19, 20 -->
+          <div class="week-accordion">
+      
+            <!-- ==============================
+                 SEMANA 17
+            ============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase5-week17">
+                Semana 17
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase5-week17" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Comienzo de simulaciones de carrera largas (2 h aprox).
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="17" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Fartlek / cuestas</td>
+                      <td>60-75 min</td>
+                    </tr>
+                    <!-- Martes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="17" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Gimnasio - Fuerza de mantenimiento</td>
+                      <td>~45 min</td>
+                    </tr>
+                    <!-- Miércoles -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="17" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Rodaje suave</td>
+                      <td>45-60 min</td>
+                    </tr>
+                    <!-- Jueves -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="17" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Gimnasio - Rutina rápida fuerza / estabilización</td>
+                      <td>~40 min</td>
+                    </tr>
+                    <!-- Viernes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="17" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Rodaje largo montaña</td>
+                      <td>~2 h</td>
+                    </tr>
+                    <!-- Sábado -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="17" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Descanso / Recuperación activa</td>
+                      <td>30 min caminar / yoga</td>
+                    </tr>
+                    <!-- Domingo -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="17" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- ==============================
+                 SEMANA 18
+            ============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase5-week18">
+                Semana 18
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase5-week18" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Aumentar el rodaje largo a ~2h15, ensayando equipación y nutrición.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="18" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Fartlek / cuestas</td>
+                      <td>65-80 min</td>
+                    </tr>
+                    <!-- Martes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="18" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Gimnasio - Fuerza de mantenimiento</td>
+                      <td>~50 min</td>
+                    </tr>
+                    <!-- Miércoles -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="18" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Rodaje suave</td>
+                      <td>45-60 min</td>
+                    </tr>
+                    <!-- Jueves -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="18" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Gimnasio - Rutina rápida fuerza / estabilización</td>
+                      <td>~40 min</td>
+                    </tr>
+                    <!-- Viernes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="18" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Rodaje largo montaña</td>
+                      <td>2h15 - 2h30</td>
+                    </tr>
+                    <!-- Sábado -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="18" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Descanso / recuperación activa</td>
+                      <td>30 min caminar / yoga</td>
+                    </tr>
+                    <!-- Domingo -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="18" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- ==============================
+                 SEMANA 19
+            ============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase5-week19">
+                Semana 19
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase5-week19" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Subir tiempo en montaña a ~2h30 o 2h45, perfeccionando hidratación y alimentación.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="19" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Fartlek / cuestas</td>
+                      <td>70-85 min</td>
+                    </tr>
+                    <!-- Martes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="19" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Gimnasio - Fuerza de mantenimiento</td>
+                      <td>~55 min</td>
+                    </tr>
+                    <!-- Miércoles -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="19" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Rodaje suave</td>
+                      <td>50-60 min</td>
+                    </tr>
+                    <!-- Jueves -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="19" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Gimnasio - Rutina rápida fuerza / estabilización</td>
+                      <td>~45 min</td>
+                    </tr>
+                    <!-- Viernes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="19" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Rodaje largo montaña</td>
+                      <td>2h30 - 2h45</td>
+                    </tr>
+                    <!-- Sábado -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="19" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Descanso / recuperación activa</td>
+                      <td>30-40 min caminar / yoga</td>
+                    </tr>
+                    <!-- Domingo -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="19" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- ==============================
+                 SEMANA 20
+            ============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase5-week20">
+                Semana 20
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase5-week20" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Simulación casi completa de la carrera (2.5-3 h). Asegurar equipación.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="20" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Fartlek / cuestas</td>
+                      <td>75-90 min</td>
+                    </tr>
+                    <!-- Martes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="20" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Gimnasio - Fuerza mantenimiento</td>
+                      <td>~60 min</td>
+                    </tr>
+                    <!-- Miércoles -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="20" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Rodaje suave</td>
+                      <td>50-60 min</td>
+                    </tr>
+                    <!-- Jueves -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="20" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Gimnasio - Rutina rápida fuerza / estabilización</td>
+                      <td>~45 min</td>
+                    </tr>
+                    <!-- Viernes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="20" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Rodaje largo montaña (simulación)</td>
+                      <td>2.5 - 3 h</td>
+                    </tr>
+                    <!-- Sábado -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="20" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Descanso / recuperación activa</td>
+                      <td>30 min caminar / yoga</td>
+                    </tr>
+                    <!-- Domingo -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="5" data-week="20" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+          </div> <!-- fin week-accordion Fase 5 -->
+        </div>
+      </article>
+      
+
+      <article class="phase-item">
+        <button class="phase-button" aria-expanded="false" aria-controls="phase6">
+          <span>Fase 6 (Semanas 21-24) - Ajustes Finales y Tapering</span>
+          <i class="fas fa-chevron-down phase-arrow" aria-hidden="true"></i>
+        </button>
+        <div class="phase-content" id="phase6" role="region" aria-hidden="true">
+          
+          <p>
+            <strong>Objetivo:</strong> Ajustes finales y tapering para llegar descansado a la carrera 
+            de 27,6 km con 1340 m D+. Reducir progresivamente la carga, afinar detalles de material, 
+            hidratación y alimentación, garantizando un estado óptimo el día de la prueba.
+          </p>
+      
+          <!-- SUB-ACORDEÓN: Semanas 21, 22, 23, 24 -->
+          <div class="week-accordion">
+      
+            <!-- ===============================
+                 SEMANA 21
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase6-week21">
+                Semana 21
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase6-week21" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Reducción inicial de volumen, conservando un mínimo de actividad.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="21" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Rodaje suave + fuerza ligera</td>
+                      <td>30-40 min</td>
+                    </tr>
+                    <!-- Martes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="21" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Descanso / trote ligero con progresiones</td>
+                      <td>20-30 min (opc.)</td>
+                    </tr>
+                    <!-- Miércoles -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="21" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Descanso total o paseo suave</td>
+                      <td>~30 min (opc.)</td>
+                    </tr>
+                    <!-- Jueves -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="21" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Descanso total / ajustes de material</td>
+                      <td>---</td>
+                    </tr>
+                    <!-- Viernes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="21" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Rodaje suave final</td>
+                      <td>30-40 min</td>
+                    </tr>
+                    <!-- Sábado -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="21" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Descanso / recuperación</td>
+                      <td>15-20 min paseo (opc.)</td>
+                    </tr>
+                    <!-- Domingo -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="21" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Tirada corta montaña o descanso</td>
+                      <td>40-50 min (opc.)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- ===============================
+                 SEMANA 22
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase6-week22">
+                Semana 22
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase6-week22" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Continúa la reducción de volumen. Prioriza descanso y preparación mental.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="22" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Rodaje suave + ejercicios pies</td>
+                      <td>30 min</td>
+                    </tr>
+                    <!-- Martes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="22" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Descanso / trote con progresiones</td>
+                      <td>20-30 min (opc.)</td>
+                    </tr>
+                    <!-- Miércoles -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="22" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                    <!-- Jueves -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="22" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                    <!-- Viernes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="22" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Rodaje muy suave (opc.)</td>
+                      <td>25-30 min</td>
+                    </tr>
+                    <!-- Sábado -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="22" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Descanso</td>
+                      <td>---</td>
+                    </tr>
+                    <!-- Domingo -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="22" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total o paseo suave</td>
+                      <td>~20-30 min</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- ===============================
+                 SEMANA 23
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase6-week23">
+                Semana 23
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase6-week23" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Carga mínima de mantenimiento, con descansos para asimilar el entrenamiento.
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="23" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Rodaje suave</td>
+                      <td>25-30 min</td>
+                    </tr>
+                    <!-- Martes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="23" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Descanso / yoga suave</td>
+                      <td>20-30 min</td>
+                    </tr>
+                    <!-- Miércoles -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="23" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                    <!-- Jueves -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="23" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Trote ligero + progresiones</td>
+                      <td>20-25 min</td>
+                    </tr>
+                    <!-- Viernes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="23" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Descanso / repaso final</td>
+                      <td>---</td>
+                    </tr>
+                    <!-- Sábado -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="23" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>Descanso activo (paseo)</td>
+                      <td>15-20 min</td>
+                    </tr>
+                    <!-- Domingo -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="23" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Descanso total</td>
+                      <td>---</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+            <!-- ===============================
+                 SEMANA 24
+            =============================== -->
+            <article class="week-item">
+              <button class="week-button" aria-expanded="false" aria-controls="phase6-week24">
+                Semana 24
+                <i class="fas fa-chevron-down week-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="week-content" id="phase6-week24" role="region" aria-hidden="true">
+                <p class="semana-resumen">
+                  Tapering final y Día de la Carrera (domingo).
+                </p>
+                <table class="daily-table">
+                  <thead>
+                    <tr>
+                      <th>Completar</th>
+                      <th>Día</th>
+                      <th>Actividad</th>
+                      <th>Duración/Distancia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Lunes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="24" data-day="1"></td>
+                      <td>Lunes</td>
+                      <td>Rodaje suave + fuerza ligera (opc.)</td>
+                      <td>30-40 min</td>
+                    </tr>
+                    <!-- Martes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="24" data-day="2"></td>
+                      <td>Martes</td>
+                      <td>Descanso o trote ligero + progresiones</td>
+                      <td>20 min (opc.)</td>
+                    </tr>
+                    <!-- Miércoles -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="24" data-day="3"></td>
+                      <td>Miércoles</td>
+                      <td>Descanso total o paseo suave</td>
+                      <td>---</td>
+                    </tr>
+                    <!-- Jueves -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="24" data-day="4"></td>
+                      <td>Jueves</td>
+                      <td>Descanso total / ajustes de material</td>
+                      <td>---</td>
+                    </tr>
+                    <!-- Viernes -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="24" data-day="5"></td>
+                      <td>Viernes</td>
+                      <td>Día previo, descanso y revisión final</td>
+                      <td>---</td>
+                    </tr>
+                    <!-- Sábado -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="24" data-day="6"></td>
+                      <td>Sábado</td>
+                      <td>---</td>
+                      <td>---</td>
+                    </tr>
+                    <!-- Domingo (CARRERA) -->
+                    <tr>
+                      <td><input type="checkbox" data-phase="6" data-week="24" data-day="7"></td>
+                      <td>Domingo</td>
+                      <td>Carrera 27,6 km y 1340 m D+</td>
+                      <td>¡Día de la carrera!</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+      
+          </div> <!-- fin week-accordion Fase 6 -->
+        </div>
+      </article>
+      
+
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-info">
+      <p>&copy; 2025 - Plan Barefoot - 27.6 km con 1340 m D+</p>
+      <p>¡Constancia y progresión gradual para alcanzar la meta!</p>
+    </div>
+    <div class="footer-social">
+      <a href="#" 
+         target="_blank" 
+         rel="noopener" 
+         aria-label="Instagram">
+        <i class="fab fa-instagram" aria-hidden="true"></i>
+      </a>
+      <a href="#" 
+         target="_blank" 
+         rel="noopener" 
+         aria-label="Facebook">
+        <i class="fab fa-facebook" aria-hidden="true"></i>
+      </a>
+      <a href="#" 
+         target="_blank" 
+         rel="noopener" 
+         aria-label="LinkedIn">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!--
+    ======================================
+    JAVASCRIPT INLINE
+    ======================================
+  -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      /* ========== 1. COUNTDOWN TIMER (20 JULIO 2025) ========== */
+      var countdownEl = document.getElementById('countdown');
+      function updateCountdown() {
+        var eventDate = new Date('July 20, 2025 00:00:00').getTime();
+        var now = new Date().getTime();
+        var diff = eventDate - now;
+
+        if(diff <= 0) {
+          countdownEl.textContent = '¡El gran día ha llegado!';
+          return;
+        }
+        var daysLeft = Math.floor(diff / (1000 * 60 * 60 * 24));
+        countdownEl.textContent = 'Faltan ' + daysLeft + ' días para el 20 de Julio de 2025.';
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 86400000); // actualiza cada 24h
+
+
+      /* ========== 2. CHECKBOX + PROGRES BAR (LOCALSTORAGE) ========== */
+      var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(function(checkbox) {
+        var phase = checkbox.getAttribute('data-phase');
+        var week = checkbox.getAttribute('data-week');
+        var day = checkbox.getAttribute('data-day');
+        var key = 'phase' + phase + '-week' + week + '-day' + day;
+        // Restaurar estado
+        var storedVal = localStorage.getItem(key);
+        if(storedVal === 'true') {
+          checkbox.checked = true;
+          highlightRow(checkbox);
+        }
+        checkbox.addEventListener('change', function() {
+          localStorage.setItem(key, checkbox.checked);
+          highlightRow(checkbox);
+          updateProgress();
+        });
+      });
+
+      // Resaltar filas marcadas
+      function highlightRow(checkbox) {
+        var row = checkbox.closest('tr');
+        if(checkbox.checked) {
+          row.classList.add('fila-completada');
+        } else {
+          row.classList.remove('fila-completada');
+        }
+      }
+
+      // Actualizar barra de progreso global
+      function updateProgress() {
+        var allChecks = document.querySelectorAll('input[type="checkbox"]');
+        var total = allChecks.length;
+        var checkedCount = 0;
+        allChecks.forEach(function(chk) {
+          if(chk.checked) {
+            checkedCount++;
+          }
+        });
+        var percent = 0;
+        if(total > 0) {
+          percent = Math.round((checkedCount / total) * 100);
+        }
+        var progressBar = document.getElementById('globalProgressBar');
+        var progressText = document.getElementById('progress-text');
+        progressBar.style.width = percent + '%';
+        progressText.textContent = percent + '%';
+      }
+      // Inicializar
+      updateProgress();
+
+
+      /* ========== 3. FASES (ACORDEÓN PRINCIPAL) ========== */
+      var phaseButtons = document.querySelectorAll('.phase-button');
+      phaseButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var content = btn.nextElementSibling;
+          var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          // Cerrar otras fases
+          phaseButtons.forEach(function(otherBtn) {
+            if(otherBtn !== btn) {
+              otherBtn.setAttribute('aria-expanded', 'false');
+              otherBtn.nextElementSibling.style.display = 'none';
+              otherBtn.nextElementSibling.setAttribute('aria-hidden', 'true');
+            }
+          });
+          // Alternar actual
+          if(!isExpanded) {
+            btn.setAttribute('aria-expanded', 'true');
+            content.style.display = 'block';
+            content.setAttribute('aria-hidden', 'false');
+            content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            btn.setAttribute('aria-expanded', 'false');
+            content.style.display = 'none';
+            content.setAttribute('aria-hidden', 'true');
+          }
+        });
+      });
+
+
+      /* ========== 4. SEMANAS (SUB-ACORDEÓN) ========== */
+      var weekButtons = document.querySelectorAll('.week-button');
+      weekButtons.forEach(function(wb) {
+        wb.addEventListener('click', function() {
+          var weekContent = wb.nextElementSibling;
+          var expanded = wb.getAttribute('aria-expanded') === 'true';
+          // Cerrar semanas hermanas
+          var parentAccordion = wb.closest('.week-accordion');
+          if(parentAccordion) {
+            var siblingButtons = parentAccordion.querySelectorAll('.week-button');
+            siblingButtons.forEach(function(sib) {
+              if(sib !== wb) {
+                sib.setAttribute('aria-expanded', 'false');
+                sib.nextElementSibling.style.display = 'none';
+                sib.nextElementSibling.setAttribute('aria-hidden', 'true');
+              }
+            });
+          }
+          // Alternar la semana actual
+          if(!expanded) {
+            wb.setAttribute('aria-expanded', 'true');
+            weekContent.style.display = 'block';
+            weekContent.setAttribute('aria-hidden', 'false');
+          } else {
+            wb.setAttribute('aria-expanded', 'false');
+            weekContent.style.display = 'none';
+            weekContent.setAttribute('aria-hidden', 'true');
+          }
+        });
+      });
+
+
+      /* ========== 5. NAVEGACIÓN PRINCIPAL POR FASE ========== */
+      var navLinks = document.querySelectorAll('.main-nav a');
+      navLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          var phaseNumber = link.getAttribute('data-phase');
+          var targetContent = document.getElementById('phase' + phaseNumber);
+          if(!targetContent) {
+            return;
+          }
+          var targetButton = targetContent.previousElementSibling; // .phase-button
+          // Cerrar otras fases
+          phaseButtons.forEach(function(b) {
+            if(b !== targetButton) {
+              b.setAttribute('aria-expanded', 'false');
+              b.nextElementSibling.style.display = 'none';
+              b.nextElementSibling.setAttribute('aria-hidden', 'true');
+            }
+          });
+          // Abrir la fase objetivo
+          targetButton.setAttribute('aria-expanded', 'true');
+          targetContent.style.display = 'block';
+          targetContent.setAttribute('aria-hidden', 'false');
+          targetContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+    });
+  </script>
+</body>
+</html>

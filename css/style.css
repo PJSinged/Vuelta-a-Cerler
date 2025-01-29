@@ -1,0 +1,372 @@
+/* ======================================
+   VARIABLES
+   ====================================== */
+   :root {
+    /* Fondo general y contenedores */
+    --color-bg: #1A1A1A;             /* Near-black background */
+    --color-container: #2A2A2A;      /* Dark gray container */
+    --color-text: #F5F5F5;           /* Off-white text for contrast */
+  
+    /* ACENTOS */
+    /* Main accent: Forest Green */
+    --color-accent: #2E8B57;         /* Replaces the old pastel reds */
+    /* Secondary accent: Warm rust/orange for special buttons or highlights */
+    --color-accent-secondary: #B5651D; 
+  
+    /* Progress bar uses the main accent */
+    --color-progress: #2E8B57;
+  
+    /* Intensidades (se mantienen, pero puedes ajustarlas si lo deseas) */
+    --color-int-baja: #31C48D;   
+    --color-int-media: #FFA74E;  
+    --color-int-alta: #FF6363;   
+  }
+  
+  /* ======================================
+     RESETEO BÁSICO
+     ====================================== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+  
+  /* ======================================
+     UTILIDADES
+     ====================================== */
+  .sr-only {
+    position: absolute;
+    width: 1px; 
+    height: 1px; 
+    padding: 0; 
+    margin: -1px; 
+    overflow: hidden; 
+    clip: rect(0,0,0,0); 
+    border: 0;
+  }
+  
+  /* ======================================
+     HEADER HERO
+     ====================================== */
+  .header-hero {
+    position: relative;
+    height: 50vh;
+    overflow: hidden;
+    background: var(--color-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .header-hero .overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.25); 
+    z-index: 1;
+  }
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .header-content {
+    position: absolute;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+  }
+  .header-content .logo {
+    margin-bottom: 1rem;
+  }
+  .header-content h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+  .header-content p {
+    font-size: 1rem;
+    color: #f0f0f0;
+    margin-bottom: 1rem;
+  }
+  
+  /* Botón de ejemplo (si se conserva el “Reset Progress”) */
+  .btn-reset {
+    background: var(--color-accent-secondary); /* Rust orange */
+    border: none;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  .btn-reset:hover {
+    background: #8F4F17; /* Darker rust tone */
+  }
+  
+  /* ======================================
+     NAVEGACIÓN
+     ====================================== */
+  .main-nav {
+    background: #2E2E2E;
+    padding: 0.8rem;
+    text-align: center;
+  }
+  .main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .main-nav li {
+    margin: 0 1rem;
+  }
+  .main-nav a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  .main-nav a:hover {
+    color: #fff;
+  }
+  
+  /* ======================================
+     CONTENEDOR
+     ====================================== */
+  .contenedor {
+    max-width: 1200px;
+    margin: 1rem auto;
+    padding: 1rem;
+    background: var(--color-container);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+  
+  /* ======================================
+     PROGRESS SECTION
+     ====================================== */
+  .progress-section h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  .progress-container {
+    margin: 0 auto 1rem;
+    background: #444;
+    border-radius: 10px;
+    height: 24px;
+    width: 80%;
+    overflow: hidden;
+    position: relative;
+  }
+  .progress-bar {
+    height: 100%;
+    background: var(--color-progress); /* Forest green */
+    width: 0%;
+    transition: width 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+  }
+  #progress-text {
+    font-size: 0.9rem;
+  }
+  
+  /* ======================================
+     INTENSIDADES
+     ====================================== */
+  .intensidades {
+    text-align: center;
+    background: var(--color-container);
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1rem 0;
+  }
+  .intensidad-baja {
+    color: var(--color-int-baja);
+    font-weight: bold;
+  }
+  .intensidad-media {
+    color: var(--color-int-media);
+    font-weight: bold;
+  }
+  .intensidad-alta {
+    color: var(--color-int-alta);
+    font-weight: bold;
+  }
+  
+  /* ======================================
+     TOOLTIP
+     ====================================== */
+  .tooltip {
+    position: relative;
+    cursor: help;
+    font-weight: 600;
+    border-bottom: 1px dotted currentColor;
+  }
+  .tooltip:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 999;
+  }
+  .tooltip::after {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  
+  /* ======================================
+     ACORDEÓN
+     ====================================== */
+  #accordion {
+    margin-top: 1rem;
+  }
+  .accordion-item {
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    overflow: hidden;
+    background: var(--color-container);
+    margin: 0.5rem 0;
+  }
+  .accordion-button {
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+    background: var(--color-accent); /* Forest green background for phase headings */
+    color: #fff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s ease;
+  }
+  .accordion-button:hover {
+    background: #27674a; /* Slightly darker forest green on hover */
+  }
+  .arrow-icon {
+    margin-left: auto;
+    transition: transform 0.3s;
+  }
+  .accordion-button[aria-expanded="true"] .arrow-icon {
+    transform: rotate(180deg);
+  }
+  .accordion-content {
+    display: none;
+    background: var(--color-container);
+    padding: 1rem;
+    animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* ======================================
+     FASES - TABLAS
+     ====================================== */
+  .fase {
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  table th, 
+  table td {
+    border: 1px solid #444;
+    padding: 0.75rem;
+    text-align: left;
+    vertical-align: middle;
+    color: var(--color-text);
+  }
+  table thead tr {
+    background: #333;
+  }
+  table tbody tr:hover {
+    background: #3a3a3c;
+  }
+  .fila-completada {
+    background-color: #2e562e !important; /* verde oscuro para filas completadas */
+  }
+  .contador-semanal {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  /* ======================================
+     FOOTER
+     ====================================== */
+  .footer {
+    background: var(--color-container);
+    color: var(--color-text);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-top: 1px solid #444;
+  }
+  .footer-info {
+    margin-bottom: 0.5rem;
+  }
+  .footer-social a {
+    margin: 0 0.3rem;
+    color: #fff;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+  }
+  .footer-social a:hover {
+    color: var(--color-accent); /* Forest green hover on social links */
+  }
+  
+  /* ======================================
+     RESPONSIVE
+     ====================================== */
+  @media (max-width: 768px) {
+    .header-content h1 {
+      font-size: 1.6rem;
+    }
+    .contenedor {
+      margin: 0.5rem;
+      padding: 0.5rem;
+    }
+    table {
+      font-size: 0.9rem;
+    }
+    .footer {
+      flex-direction: column;
+    }
+  }
+  
